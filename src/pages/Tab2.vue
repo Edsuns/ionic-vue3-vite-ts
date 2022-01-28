@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header>
+    <ion-header :translucent="true">
       <ion-toolbar>
         <ion-title>Tab 2</ion-title>
       </ion-toolbar>
@@ -43,6 +43,8 @@ import {
   IonLabel,
   IonList,
   IonPage,
+  RefresherCustomEvent,
+  InfiniteScrollCustomEvent,
 } from '@ionic/vue'
 import { defineComponent, ref } from 'vue'
 
@@ -91,7 +93,7 @@ export default defineComponent({
       }
     }
 
-    const loadData = (ev: CustomEvent) => {
+    const loadData = (ev: InfiniteScrollCustomEvent) => {
       setTimeout(() => {
         pushData()
         console.log('Loaded data')
@@ -105,7 +107,7 @@ export default defineComponent({
       }, 500)
     }
 
-    const doRefresh = (event: CustomEvent) => {
+    const doRefresh = (event: RefresherCustomEvent) => {
       console.log('Begin async operation')
 
       const data: string[] = []
@@ -117,7 +119,7 @@ export default defineComponent({
         console.log('Async operation has ended')
         items.value = data
         event.target.complete()
-      }, 1000)
+      }, 500)
     }
 
     pushData()

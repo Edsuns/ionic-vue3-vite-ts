@@ -1,8 +1,8 @@
 <template>
-  <ion-header>
+  <ion-header :translucent="true">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button @click="$router.back"></ion-back-button>
+        <ion-back-button default-href="/"></ion-back-button>
       </ion-buttons>
       <ion-title>{{ title ?? $route.meta.title }}</ion-title>
     </ion-toolbar>

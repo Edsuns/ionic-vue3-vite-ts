@@ -12,17 +12,34 @@
         </ion-toolbar>
       </ion-header>
 
-      <ExploreContainer name="Tab 3 page" />
+      <ion-list>
+        <ion-item>
+          <ion-label>Dark Mode</ion-label>
+          <ion-toggle @ionChange="toggleDarkMode" value="Dark Mode" :checked="darkMode">
+          </ion-toggle>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue'
-import ExploreContainer from '@/components/ExploreContainer.vue'
+<script lang="ts" setup>
+import { ref } from 'vue'
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonToggle,
+  ToggleCustomEvent,
+} from '@ionic/vue'
 
-export default {
-  name: 'Tab3',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
-}
+const darkMode = ref(document.body.classList.contains('dark'))
+
+const toggleDarkMode = (ev: ToggleCustomEvent) =>
+  document.body.classList.toggle('dark', ev.detail.checked)
 </script>

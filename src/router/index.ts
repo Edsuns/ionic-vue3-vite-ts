@@ -1,16 +1,8 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import { RouteRecordRaw } from 'vue-router'
 import Tabs from '@/pages/Tabs.vue'
-import Explore from '@/pages/Explore.vue'
 
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/explore/:name',
-    name: 'explore',
-    component: Explore,
-    props: true,
-  },
-
   // Tabs
   {
     path: '/',
@@ -37,6 +29,14 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/pages/Tab3.vue'),
       },
     ],
+  },
+
+  // Nested Pages
+  {
+    path: '/explore/:name',
+    name: 'explore',
+    component: () => import('@/pages/Explore.vue'),
+    props: true,
   },
 ]
 

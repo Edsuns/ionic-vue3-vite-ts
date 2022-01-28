@@ -20,6 +20,12 @@ import '@ionic/vue/css/text-transformation.css'
 import '@ionic/vue/css/flex-utils.css'
 import '@ionic/vue/css/display.css'
 
+/* Theme variables */
+import './theme/variables.css'
+
+/* Setup dark mode */
+document.body.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches)
+
 const app = createApp(App).use(IonicVue).use(router)
 
 router.isReady().then(() => {
