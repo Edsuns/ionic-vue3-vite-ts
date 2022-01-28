@@ -40,6 +40,9 @@ import {
 
 const darkMode = ref(document.body.classList.contains('dark'))
 
-const toggleDarkMode = (ev: ToggleCustomEvent) =>
+const toggleDarkMode = (ev: ToggleCustomEvent) => {
   document.body.classList.toggle('dark', ev.detail.checked)
+  const colorScheme = document.head.querySelector('meta[name="color-scheme"]')
+  colorScheme?.setAttribute('content', ev.detail.checked ? 'dark' : 'light')
+}
 </script>
